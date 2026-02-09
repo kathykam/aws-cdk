@@ -73,7 +73,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 // provisioning a cluster
 const cluster = new eks.Cluster(this, 'hello-eks', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 
@@ -142,7 +142,7 @@ Creating a new cluster is done using the `Cluster` or `FargateCluster` construct
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 ```
@@ -161,7 +161,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 import * as core from 'aws-cdk-lib/core';
 
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
   removalPolicy: core.RemovalPolicy.RETAIN, // Keep all resources created by the construct.
 });
@@ -173,7 +173,7 @@ You can also use `FargateCluster` to provision a cluster that uses only fargate 
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.FargateCluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 ```
@@ -200,7 +200,7 @@ At cluster instantiation time, you can customize the number of instances and the
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   defaultCapacity: 5,
   defaultCapacityInstance: ec2.InstanceType.of(ec2.InstanceClass.M5, ec2.InstanceSize.SMALL),
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
@@ -215,7 +215,7 @@ Additional customizations are available post instantiation. To apply them, set t
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 const cluster = new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   defaultCapacity: 0,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
@@ -319,7 +319,7 @@ const eksClusterNodeGroupRole = new iam.Role(this, 'eksClusterNodeGroupRole', {
 });
 
 const cluster = new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   defaultCapacity: 0,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
@@ -438,7 +438,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 const cluster = new eks.Cluster(this, 'cluster-to-rename', {
   clusterName: 'foo', // rename this to 'bar'
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
 });
 
 // allow the cluster admin role to delete the cluster 'foo'
@@ -494,7 +494,7 @@ The following code defines an Amazon EKS cluster with a default Fargate Profile 
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 const cluster = new eks.FargateCluster(this, 'MyCluster', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 ```
@@ -574,7 +574,7 @@ You can also configure the cluster to use an auto-scaling group as the default c
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 const cluster = new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   defaultCapacityType: eks.DefaultCapacityType.EC2,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
@@ -681,7 +681,7 @@ You can configure the [cluster endpoint access](https://docs.aws.amazon.com/eks/
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 const cluster = new eks.Cluster(this, 'hello-eks', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   endpointAccess: eks.EndpointAccess.PRIVATE, // No access outside of your VPC.
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
@@ -706,7 +706,7 @@ To deploy the controller on your EKS cluster, configure the `albController` prop
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   albController: {
     version: eks.AlbControllerVersion.V2_8_2,
   },
@@ -720,7 +720,7 @@ To provide additional Helm chart values supported by `albController` in CDK, use
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   albController: {
     version: eks.AlbControllerVersion.V2_8_2,
     additionalHelmChartValues: {
@@ -737,7 +737,7 @@ To overwrite an existing ALB controller service account, use the `overwriteServi
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   albController: {
     version: eks.AlbControllerVersion.V2_8_2,
     overwriteServiceAccount: true
@@ -784,7 +784,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 declare const vpc: ec2.Vpc;
 
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   vpc,
   vpcSubnets: [{ subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS }],
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
@@ -834,7 +834,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 declare const proxyInstanceSecurityGroup: ec2.SecurityGroup;
 const cluster = new eks.Cluster(this, 'hello-eks', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   clusterHandlerEnvironment: {
     https_proxy: 'http://proxy.myproxy.com',
   },
@@ -878,7 +878,7 @@ for (let subnet of subnets) {
 }
 
 const cluster = new eks.Cluster(this, 'hello-eks', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   vpc: vpc,
   ipFamily: eks.IpFamily.IP_V6,
   vpcSubnets: [{ subnets: vpc.publicSubnets }],
@@ -916,7 +916,7 @@ You can configure the environment of this function by specifying it at cluster i
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 const cluster = new eks.Cluster(this, 'hello-eks', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlEnvironment: {
     'http_proxy': 'http://proxy.myproxy.com',
   },
@@ -940,7 +940,7 @@ the `@aws-cdk/lambda-layer-kubectl-vXY` packages.
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 const cluster = new eks.Cluster(this, 'hello-eks', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 ```
@@ -976,7 +976,7 @@ const cluster1 = new eks.Cluster(this, 'MyCluster', {
   kubectlLayer: layer,
   vpc,
   clusterName: 'cluster-name',
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
 });
 
 // or
@@ -996,7 +996,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'MyCluster', {
   kubectlMemory: Size.gibibytes(4),
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 
@@ -1038,7 +1038,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 declare const role: iam.Role;
 new eks.Cluster(this, 'HelloEKS', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   mastersRole: role,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
@@ -1091,7 +1091,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 const secretsKey = new kms.Key(this, 'SecretsKey');
 const cluster = new eks.Cluster(this, 'MyCluster', {
   secretsEncryptionKey: secretsKey,
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 ```
@@ -1104,7 +1104,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 const secretsKey = new kms.Key(this, 'SecretsKey');
 const cluster = new eks.FargateCluster(this, 'MyFargateCluster', {
   secretsEncryptionKey: secretsKey,
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
 ```
@@ -1126,7 +1126,7 @@ Once you have identified the on-premises node and pod (optional) CIDRs you will 
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'Cluster', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'KubectlLayer'),
   remoteNodeNetworks: [
     {
@@ -1210,7 +1210,7 @@ const mastersRole = new iam.Role(this, 'MastersRole', {
 
 const cluster = new eks.Cluster(this, 'EksCluster', {
   vpc,
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'KubectlLayer'),
   mastersRole,
 });
@@ -1260,7 +1260,7 @@ declare const vpc: ec2.Vpc;
 
 new eks.Cluster(this, 'Cluster', {
   vpc,
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'KubectlLayer'),
   authenticationMode: eks.AuthenticationMode.API_AND_CONFIG_MAP,
 });
@@ -1324,7 +1324,7 @@ const eksAdminViewRole = new iam.Role(this, 'EKSAdminViewRole', {
 const cluster = new eks.Cluster(this, 'Cluster', {
   vpc,
   mastersRole: clusterAdminRole,
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   kubectlLayer: new KubectlV34Layer(this, 'KubectlLayer'),
   authenticationMode: eks.AuthenticationMode.API_AND_CONFIG_MAP,
 });
@@ -1765,7 +1765,7 @@ when a cluster is defined:
 import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 new eks.Cluster(this, 'MyCluster', {
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   prune: false,
   kubectlLayer: new KubectlV34Layer(this, 'kubectl'),
 });
@@ -2174,7 +2174,7 @@ import { KubectlV34Layer } from '@aws-cdk/lambda-layer-kubectl-v34';
 
 const cluster = new eks.Cluster(this, 'Cluster', {
   // ...
-  version: eks.KubernetesVersion.V1_34,
+  version: eks.KubernetesVersion.V1_35,
   clusterLogging: [
     eks.ClusterLoggingTypes.API,
     eks.ClusterLoggingTypes.AUTHENTICATOR,
